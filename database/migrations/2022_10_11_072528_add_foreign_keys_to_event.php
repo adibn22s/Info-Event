@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignKeysToEvent extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,12 @@ class AddForeignKeysToEvent extends Migration
     public function up()
     {
         Schema::table('event', function (Blueprint $table) {
-            //
+            $table->foreign('request_event_id','fk_event_to_request_event')
+            ->references('id')->on('request_event')->onDelete('cascade')
+            ->onUpdate('cascade');
+            $table->foreign('user_id','fk_event_to_users')
+            ->references('id')->on('users')->onDelete('cascade')
+            ->onUpdate('cascade');
         });
     }
 
@@ -26,7 +31,8 @@ class AddForeignKeysToEvent extends Migration
     public function down()
     {
         Schema::table('event', function (Blueprint $table) {
-            //
+            $table->dropForeign('fk_event_to_request_event');
+            $table->dropForeign('fk_event_to_users');
         });
     }
-}
+};

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEventTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -15,8 +15,10 @@ class CreateEventTable extends Migration
     {
         Schema::create('event', function (Blueprint $table) {
             $table->id();
-            $table->integer('request_event');
-            $table->integer('user_id');
+            $table->foreignId('request_event_id')->nullable()
+            ->index('fk_event_to_request_event');
+            $table->foreignId('user_id')->nullable()
+            ->index('fk_event_to_users');
             $table->string('name')->nullable();
             $table->timestamps();
             $table->softDeletes();
@@ -32,4 +34,4 @@ class CreateEventTable extends Migration
     {
         Schema::dropIfExists('event');
     }
-}
+};
