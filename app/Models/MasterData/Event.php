@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Models\ManagementAccess;
+namespace App\Models\MasterData;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class DetailUser extends Model
+class Event extends Model
 {
     // use HasFactory;
     use SoftDeletes;
 
     // Declare:table
-    public $table = 'detail_user';
+    public $table = 'event';
 
-    // this fiela must type date yyyy-mm-dd hh-mm-ss
+    // this field must type date yyyy-mm-dd hh-mm-ss
     protected $dates = [
         'created_at',
         'updated_at',
@@ -23,23 +24,24 @@ class DetailUser extends Model
 
     // declare fillable
     protected $fillable = [
-        'user_id',
-        'address',
-        'preofession',
-        'instance',
-        'contact',
-        'photo',
+        'request_event_id',
+        'name',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
-    // one to one
+    // one to many
     public function users()
     {
         // 3 parameters (path models ,field foreign key dan field primary key dari tabel hasmany/hasone)
         return $this->belongsTo('App\Models\User.php','user_id','id');
-    }
+    } 
+
+    // one to many
+    public function request_event()
+    {
+        // 3 parameters (path models ,field foreign key dan field primary key dari tabel hasmany/hasone)
+        return $this->belongsTo('App\Models\Operational\RequestEvent.php','request_event_id','id');
+    }  
 }
-
-

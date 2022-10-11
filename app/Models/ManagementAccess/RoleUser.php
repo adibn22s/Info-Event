@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class DetailUser extends Model
+class RoleUser extends Model
 {
     // use HasFactory;
     use SoftDeletes;
 
     // Declare:table
-    public $table = 'detail_user';
+    public $table = 'role_user';
 
     // this fiela must type date yyyy-mm-dd hh-mm-ss
     protected $dates = [
@@ -24,22 +24,23 @@ class DetailUser extends Model
     // declare fillable
     protected $fillable = [
         'user_id',
-        'address',
-        'preofession',
-        'instance',
-        'contact',
-        'photo',
+        'role_id',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
-    // one to one
+    // one to many
     public function users()
     {
         // 3 parameters (path models ,field foreign key dan field primary key dari tabel hasmany/hasone)
-        return $this->belongsTo('App\Models\User.php','user_id','id');
-    }
+        return $this->belongsToMany('App\Models\User.php','user_id','id');
+    }  
+
+    // one to many
+    public function role()
+    {
+        // 3 parameters (path models ,field foreign key dan field primary key dari tabel hasmany/hasone)
+        return $this->belongsToMany('App\Models\ManagementAccess\Role.php','role_id','id');
+    }  
 }
-
-
