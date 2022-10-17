@@ -42,6 +42,6 @@ class Event extends Model
     public function request_event()
     {
         // 3 parameters (path models ,field foreign key dan field primary key dari tabel hasmany/hasone)
-        return $this->belongsTo('App\Models\Operational\RequestEvent.php','request_event_id','id');
+        return $this->hasMany('App\Models\Operational\RequestEvent.php','request_event_id','id');
     }  
 }

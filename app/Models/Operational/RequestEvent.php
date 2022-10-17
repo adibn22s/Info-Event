@@ -41,6 +41,13 @@ class RequestEvent extends Model
     public function users()
     {
         // 3 parameters (path models ,field foreign key dan field primary key dari tabel hasmany/hasone)
-        return $this->belongsTo('App\Models\User.php','user_id','id');
+        return $this->belongsTo('App\Models\User','user_id','id');
     } 
+
+    public function event()
+    {
+        // 3 parameters (path models ,field foreign key dan field primary key dari tabel hasmany/hasone)
+        return $this->belongsTo('App\Models\MasterData\Event','event_id','id');
+    }
+    
 }

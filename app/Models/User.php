@@ -65,20 +65,32 @@ class User extends Authenticatable
     public function detail_user()
     {
         // 2 parameters (path models dan field foreign key)
-        return $this->hasOne('Aspp\Models\ManagementAccess\DetailUser.php','user_id');
+        return $this->hasOne('Aspp\Models\ManagementAccess\DetailUser','user_id');
     }
    
     // one to many
     public function role_user()
     {
         // 2 parameters (path models dan field foreign key)
-        return $this->hasMany('App\Models\ManagementAccess\RoleUser.php','user_id',);
+        return $this->hasMany('App\Models\ManagementAccess\RoleUser','user_id',);
     }
 
     // one to many
     public function event()
     {
         // 2 parameters (path models dan field foreign key)
-        return $this->hasMany('App\Models\MasterData\Event.php','user_id',);
+        return $this->hasMany('App\Models\MasterData\Event','user_id',);
+    }
+
+    // one to many
+    public function request_event()
+    {
+        // 2 parameters (path models dan field foreign key)
+        return $this->hasMany('App\Models\Operational\RequestEvent','user_id',);
+    }
+
+    public function role()
+    {
+        return $this->belongsToMany('App\Models\ManagementAccess\Role');
     }
 }
