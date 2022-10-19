@@ -1,60 +1,91 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('layouts.auth')
 
-        <x-jet-validation-errors class="mb-4" />
+@section('title', 'Register')
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+@section('content')
 
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
+<!-- Gambar dan Tulisan Hello -->
+    <table class="table-auto border-spacing-0 table justify-items-center">
+        <tbody>
+        <tr>
+            <td class = "">
+            <img class="object-fill" src = "{{ asset('assets/frontsite/images/logoform.png') }}" width = "300px">
+            </td>
+            <br>
+            <td class = "">
+            <h1 class = "font-sans font-bold text-center text-white hello">Hello, Everyone! Register Now</h1>
+            <h1 class = "font-sans font-bold text-center text-white hello">or Log In to Continue!</h1>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+  <!-- End Gambar dan Tulisan Hello -->
 
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
+  <br><br>
 
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
+  <!-- Form Register -->
+    <form method="POST" action="{{ route('register') }}">
 
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
+        @csrf
 
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms"/>
+            <div class="grid gap-2 mb-6 backdrop-blur-sm bg-white/30 rounded-3xl blur1">
+                <div class="m-12">
+                    <div>
+                    <input for="name" type="text" id="name" name="name" class="backdrop-blur-sm bg-white/5 border border-indigo-500 text-white text-sm block w-full p-2.5 mb-1
+                     placeholder-white focus:outline-none focus:border-indigo-500" placeholder="Full Name" value="{{ old('name') }}" required autofocus />
 
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
-                            </div>
+                     @if ($errors->has('name'))
+                        <p class="text-red-500 mb-3 text-sm">{{ $errors->first('name') }}</p>
+                    @endif
+
+                    </div>
+                    
+                    
+                    <div>
+                    <input for="email" type="text" id="email" name="email" class="backdrop-blur-sm bg-white/5 border border-indigo-500 text-white text-sm block w-full p-2.5 mb-1 placeholder-white focus:outline-none focus:border-indigo-500" 
+                    placeholder="Email Address" value="{{ old('email') }}" required autofocus
+                    />
+
+                    @if ($errors->has('email'))
+                        <p class="text-red-500 mb-3 text-sm">{{ $errors->first('email') }}</p>
+                    @endif
+
+                    </div>
+                    <div>
+                    <input for="password" type="password" id="password" name="password" class="backdrop-blur-sm bg-white/5 border border-indigo-500 text-white text-sm block w-full p-2.5 mb-1 placeholder-white focus:outline-none focus:border-indigo-500" 
+                    placeholder="Password" value="{{ old('password')}}"  required autofocus
+                    />
+                    </div>
+                    <div>
+                    <input for="password_confirmation" type="password" id="password_confirmation"
+                    name="password_confirmation" class="backdrop-blur-sm bg-white/5 border border-indigo-500 text-white text-sm block w-full p-2.5 mb-1 placeholder-white focus:outline-none focus:border-indigo-500"
+                    placeholder="Confirmation Password" required autofocus
+                    />
+
+                    @if ($errors->has('password_confirmation'))
+                        <p class="text-red-500 mb-3 text-sm">{{ $errors->first('password_confirmation') }}</p>
+                    @endif
+
+                    </div>
+                    <div class="md:flex md:items-center mb-6">
+                        <div class="md:w-1/3"></div>
+                        <label class="md:w-2/3 block text-black font-bold">
+                            <span class="text-sm">
+                            Already Have an Account? <a href = "login.html"><u>Login Here!</u></a>
+                            </span>
+                    </label>
+                    </div>
+                    <div class="md:flex md:items-center">
+                        <div class="md:w-1/2"></div>
+                        <div class="md:w-2/3">
+                            <button class="shadow bg-purple-700 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                            Register
+                            </button>
                         </div>
-                    </x-jet-label>
+                    </div>
                 </div>
-            @endif
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
             </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+    </form>
+  <!-- End Form Register -->
+
+@endsection

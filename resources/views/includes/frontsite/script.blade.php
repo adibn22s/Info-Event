@@ -1,0 +1,1 @@
+<script src="{{ url('https://cdn.tailwindcss.com') }}"></script>

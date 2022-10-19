@@ -1,48 +1,80 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('layouts.auth')
 
-        <x-jet-validation-errors class="mb-4" />
+@section('title', 'Login')
 
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
-        @endif
+@section('content')
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+<!-- Gambar dan Tulisan Hello -->
+<table class="table table-auto border-spacing-0 justify-items-center">
+    <tbody>
+      <tr>
+        <td class = "">
+          <img class="object-fill items-center" src = "{{ asset('assets/frontsite/images/logoform.png') }}" width = "300px">
+        </td>
+        <br>
+        <td class = "">
+          <h1 class = "font-sans font-bold text-center text-white hello">Hello, Everyone! Register Now</h1>
+          <h1 class = "font-sans font-bold text-center text-white hello">or Log In to Continue!</h1>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- End Gambar dan Tulisan Hello -->
 
-            <div>
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
+  <br><br>
 
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            </div>
+  @if (session('status'))
+    <div class="mb-4 font-medium text-sm text-green-600">
+       {{ session('status') }}
+    </div>
+  @endif
 
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-jet-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
+  <!-- Form Login -->
+  <form method="POST" action="{{ route('login') }}" >
 
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
+    @csrf
 
-                <x-jet-button class="ml-4">
-                    {{ __('Log in') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+    <div class="grid gap-2 mb-6 backdrop-blur-sm bg-white/30 rounded-3xl blur1">
+    <div class="m-12">
+    <div>
+      <input for="email" type="email" id="email" name="email" class="backdrop-blur-sm bg-white/5 border border-indigo-500 
+      text-white text-sm block w-full p-2.5 mb-1 placeholder-white focus:outline-none focus:border-indigo-500" placeholder="Email Address" 
+      value="{{ old('email') }}" required autofocus
+      />
+      @if ($errors->has('email'))
+        <p class="text-red-500 mb-3 text-sm">{{ $errors->first('email') }}</p>
+      @endif
+    </div>
+    <div>
+      <label>
+      <input for="password" type="password" id="password" name="password" class="backdrop-blur-sm bg-white/5 border border-indigo-500 text-white text-sm block w-full p-2.5 mb-1
+       placeholder-white focus:outline-none focus:border-indigo-500" placeholder="Password" 
+       required 
+       />
+       @if ($errors->has('password'))
+          <p class="text-red mb-3 text-sm">{{ $errors->first('password') }}</p>
+       @endif
+      </label>
+    </div>
+    <div class="md:flex md:items-center mb-6">
+      <div class="md:w-1/3"></div>
+      <label class="md:w-2/3 block text-black font-bold">
+        <span class="text-sm">
+          Don't Have an Account? <a href = "{{ route('register') }}"><u>Register Here!</u></a>
+        </span>
+      </label>
+    </div>
+    <div class="md:flex md:items-center">
+      <div class="md:w-1/2"></div>
+      <div class="md:w-2/3">
+        <button class="shadow bg-purple-700 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+          Login
+        </button>
+      </div>
+      </div>
+    </div>
+    </div>
+  </form>
+  <!-- End Form Register -->
+
+@endsection
