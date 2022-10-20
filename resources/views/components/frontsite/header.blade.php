@@ -7,7 +7,7 @@
         </div>
         <div class="navkanan ml-24 mr-10 mb-5 navbar">
           <a href="{{ route('index') }}" class="px-3 py-2 text-white rounded-lg hover:bg-transparent hover:text-slate-900 font-family:'Poppins' mx-1 text-base">Home</a>
-          <a href="/event" class="px-3 py-2 text-white rounded-lg hover:bg-transparent hover:text-slate-900 font-family:'Poppins' mx-1 text-base">Event</a>
+          <a href="{{ ('Event') }}" class="px-3 py-2 text-white rounded-lg hover:bg-transparent hover:text-slate-900 font-family:'Poppins' mx-1 text-base">Event</a>
           <a href="{{ ('Add-Event') }}" class="px-3 py-2 text-white rounded-lg hover:bg-transparent hover:text-slate-900 font-family:'Poppins' mx-1 text-base"
             >Add Event</a
           >

@@ -5,6 +5,7 @@ use App\Http\Controllers\Frontsite\DetailEventController;
 use App\Http\Controllers\Frontsite\LandingController;
 use App\Http\Controllers\Frontsite\AddEventController;
 use App\Http\Controllers\Frontsite\SuccessAddController;
+use App\Http\Controllers\Frontsite\EventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,7 @@ use App\Http\Controllers\Frontsite\SuccessAddController;
 */
 
 Route::resource('/',LandingController::class); 
+Route::resource('index',EventController::class); 
 Route::resource('Add-Event', AddEventController::class);
 Route::resource('Add/success', SuccessAddController::class);
 

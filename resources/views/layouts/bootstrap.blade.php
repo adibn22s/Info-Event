@@ -19,7 +19,7 @@
         @include('components.frontsite.footer')
 
         @stack('before-script')
-            @include('includes.frontsite.scriptboot')
+            @include('includes.frontsite.script')
         @stack('after-script')
 
     </body>

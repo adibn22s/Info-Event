@@ -9,7 +9,7 @@
       <div class="glassbox">
         <div class="row">
           <div class="col-md-5">
-            <img class="img-fluid" src="komp_info2.png" alt="Gambar Komputer" width="600px" />
+            <img class="img-fluid" src="{{ asset('assets/frontsite/images/komputer.jpeg') }}" alt="Gambar Komputer" width="600px" />
           </div>
           <div class="col-md-6 text-center text-pertama">
             <div class="row fw-bolder text-white text-atas mx-auto mt-3">
@@ -42,7 +42,7 @@
         </div>
         <div class="col-md-4">
           <div>
-            <img class="img-fluid" src="about-logo4.png" alt="" width="300px" />
+            <img class="img-fluid" src="{{ asset('assets/frontsite/images/about-logo4.png') }}" alt="" width="300px" />
           </div>
         </div>
       </div>
@@ -53,7 +53,7 @@
 
   <!-- Carousel Start -->
   <div class="glassbox2">
-    <h1 class="text-white text-center">Documentation</h1>
+    <h1 class="text-judul text-white text-center">Documentation</h1>
     <div id="carouselExampleCaptions" class="carousel slide lebar-carousel mx-auto" data-bs-ride="false">
       <div class="carousel-indicators">
         <button
@@ -69,21 +69,21 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="img1.jpg" class="d-block w-100" alt="..." />
+          <img src="{{ asset('assets/frontsite/images/webinaron.jpeg') }}" class="d-block w-100" alt="..." />
           <div class="carousel-caption d-none d-md-block">
             <h5>First slide label</h5>
             <p>Some representative placeholder content for the first slide.</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="img2.jpg" class="d-block w-100" alt="..." />
+          <img src="{{ asset('assets/frontsite/images/webinar2.jpeg') }}" class="d-block w-100" alt="..." />
           <div class="carousel-caption d-none d-md-block">
             <h5>Second slide label</h5>
             <p>Some representative placeholder content for the second slide.</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="img3.jpg" class="d-block w-100" alt="..." />
+          <img src="{{ asset('assets/frontsite/images/webinar.jpg') }}" class="d-block w-100" alt="..." />
           <div class="carousel-caption d-none d-md-block">
             <h5>Third slide label</h5>
             <p>Some representative placeholder content for the third slide.</p>

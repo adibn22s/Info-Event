@@ -1,9 +1,17 @@
-body,
 html {
-    height: 100%;
+    height: auto;
+    width: auto;
 }
+body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
 .background {
-    /* height: 100%; */
+    height: auto;
+    width: auto;
     background-image: linear-gradient(
         to right bottom,
         #f849ac,
@@ -20,7 +28,6 @@ html {
         #60f2e9
     );
 }
-
 .navbar {
     font-size: 15px;
 }
