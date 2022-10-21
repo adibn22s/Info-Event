@@ -19,7 +19,7 @@ use App\Http\Controllers\Frontsite\EventController;
 */
 
 Route::resource('/',LandingController::class); 
-Route::resource('index',EventController::class); 
+Route::resource('Event',EventController::class); 
 Route::resource('Add-Event', AddEventController::class);
 Route::resource('Add/success', SuccessAddController::class);
 

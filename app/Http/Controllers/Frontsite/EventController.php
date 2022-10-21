@@ -24,7 +24,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        return view('pages.frontsite.landing-page.index');
+        return view('pages.frontsite.event.index');
     }
 
     /**
