@@ -17,12 +17,14 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()
             ->index('fk_detail_user_to_users');
-            $table->string('address');
-            $table->string('profession');
-            $table->string('instance');
-            $table->integer('contact');
-            $table->longText('photo');
+            $table->foreignId('type_user_id')->nullable()->index('fk_detail_user_to_type_user');
+            $table->string('address')->nullable();
+            $table->string('profession')->nullable();
+            $table->string('instance')->nullable();
+            $table->integer('contact')->nullable();
+            $table->longText('photo')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

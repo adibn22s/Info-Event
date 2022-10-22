@@ -34,5 +34,10 @@ class Permission extends Model
     {
         // 3 parameters (path models ,field foreign key dan field primary key dari tabel hasmany/hasone)
         return $this->hasMany('App\Models\ManagementAccess\Permission.php','permission_id');
-    }  
+    } 
+    // many to many
+    public function role()
+    {
+        return $this->belongsToMany('App\Models\ManagementAccess\Role');
+    } 
 }

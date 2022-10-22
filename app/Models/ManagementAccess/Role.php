@@ -29,17 +29,29 @@ class Role extends Model
         'deleted_at',
     ];
 
+    // many to many
+    public function user()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    public function permission()
+    {
+        return $this->belongsToMany('App\Models\ManagementAccess\Permission');
+    }
+
     // one to many
     public function role_user()
     {
-        // 3 parameters (path models ,field foreign key dan field primary key dari tabel hasmany/hasone)
-        return $this->hasMany('App\Models\ManagementAccess.php','role_id');
-    }  
+        // 2 parameter (path model, field foreign key)
+        return $this->hasMany('App\Models\ManagementAccess\RoleUser', 'role_id');
+    }
 
-    // one to many
     public function permission_role()
     {
-        // 3 parameters (path models ,field foreign key dan field primary key dari tabel hasmany/hasone)
-        return $this->hasMany('App\Models\ManagementAccess.php','role_id');
-    }  
+        // 2 parameter (path model, field foreign key)
+        return $this->hasMany('App\Models\ManagementAccess\PermissionRole', 'role_id');
+    }
+
 }
+

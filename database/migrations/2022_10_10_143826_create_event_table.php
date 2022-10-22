@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()
             ->index('fk_event_to_users');
             $table->string('name')->nullable();
+            $table->longText('poster')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
