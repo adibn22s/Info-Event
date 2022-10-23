@@ -77,9 +77,32 @@
                                                         <label class="col-md-3 label-control" for="name">Name <code style="color:red;">required</code></label>
                                                         <div class="col-md-9 mx-auto">
                                                             <input type="text" id="name" name="name" class="form-control" placeholder="example Webinar Fikti 2022" value="{{old('name')}}" autocomplete="off" required>
+                                                            
 
                                                             @if($errors->has('name'))
                                                                 <p style="font-style: bold; color: red;">{{ $errors->first('name') }}</p>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 label-control" for="name">Id User <code style="color:red;">required</code></label>
+                                                        <div class="col-md-9 mx-auto">
+                                                            <input type="integer" id="id_user" name="id_user" class="form-control" placeholder="id_user" value="{{old('id_user')}}" autocomplete="off" required>
+                                                           
+
+                                                            @if($errors->has('id_user'))
+                                                                <p style="font-style: bold; color: red;">{{ $errors->first('id_user') }}</p>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-md-3 label-control" for="name">Id Request Event<code style="color:red;">required</code></label>
+                                                        <div class="col-md-9 mx-auto">
+                                                            <input type="integer" id="id_request_event" name="id_request_event" class="form-control" placeholder="id_request_event" value="{{old('id_request_event')}}" autocomplete="off" required>
+                                                           
+
+                                                            @if($errors->has('id_request_event'))
+                                                                <p style="font-style: bold; color: red;">{{ $errors->first('id_request_event') }}</p>
                                                             @endif
                                                         </div>
                                                     </div>

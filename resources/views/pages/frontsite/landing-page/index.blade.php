@@ -4,7 +4,7 @@
 
 @section('content')
 
-<section>
+
     <div class="container">
       <div class="glassbox">
         <div class="row">
@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-  </section>
+
 
   <!-- Glass End -->
   <div class="pemisah"></div>

@@ -6,6 +6,8 @@ use App\Models\MasterData\Event;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
+use Gate;
+
 class StoreEventRequest extends FormRequest
 {
     /**
@@ -15,7 +17,9 @@ class StoreEventRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        abort_if(Gate::denies('event_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        
+        return true;
     }
 
     /**

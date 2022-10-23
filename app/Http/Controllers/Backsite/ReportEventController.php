@@ -44,7 +44,7 @@ class ReportEventController extends Controller
      */
     public function index()
     {
-        // abort_if(Gate::denies('event_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('event_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         // for table grid
         $event = Event::orderBy('created_at', 'desc')->get();
@@ -107,7 +107,7 @@ class ReportEventController extends Controller
      */
     public function show(Event $event)
     {
-        // abort_if(Gate::denies('doctor_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('event_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return view('pages.backsite.master-data.event.show', compact('event'));
     }
@@ -120,7 +120,7 @@ class ReportEventController extends Controller
      */
     public function edit(Event $event)
     {
-        // abort_if(Gate::denies('doctor_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('event_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         // for select2 = ascending a to z
         $request_event = RequestEvent::orderBy('event_name', 'asc')->get();
@@ -139,11 +139,6 @@ class ReportEventController extends Controller
     {
         // get all request from frontsite
         $data = $request->all();
-
-        // re format before push to table
-        // $data['fee'] = str_replace(',', '', $data['fee']);
-        // $data['fee'] = str_replace('IDR ', '', $data['fee']);
-
         // upload process here
         // change format photo
         if(isset($data['poster'])){
@@ -181,7 +176,7 @@ class ReportEventController extends Controller
      */
     public function destroy(Event $event)
     {
-        // abort_if(Gate::denies('doctor_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('event_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         // first checking old file to delete from storage
         $get_item = $event['poster'];

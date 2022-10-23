@@ -4,6 +4,7 @@ namespace App\Actions\Fortify;
 
 use App\Models\User;
 use App\Models\ManagementAccess\DetailUser;
+use App\Models\ManagementAccess\RoleUser;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -50,6 +51,13 @@ class CreateNewUser implements CreatesNewUsers
             $detail_user->contact = NULL;
             $detail_user->photo = NULL;
             $detail_user->save();
+
+            // Add to role users - set role to patient
+            $role_user = new RoleUser;
+            $role_user->user_id = $user->id;
+            $role_user->role_id = 4;
+            $role_user->save();
+
 
         });
     });

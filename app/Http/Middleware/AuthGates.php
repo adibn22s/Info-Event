@@ -27,7 +27,10 @@ class AuthGates
         // user active or not
         if(!app()->runningInConsole() && $user)
         {
+            //ambil data yang memiliki permission
             $roles              = Role::with('permission')->get();
+
+            //array untuk menampung data dari $roles
             $permissionsArray   = [];
 
             // nested loop
@@ -35,6 +38,8 @@ class AuthGates
             foreach ($roles as $role){
                 // looping for permission ( where table permnission_role )
                 foreach ($role->permission as $permissions){
+
+                    // 2d array
                     $permissionsArray[$permissions->title][] = $role->id;
                 }
             }
@@ -45,6 +50,7 @@ class AuthGates
                 use ($roles) {
                     return count(array_intersect($user->role->pluck('id')
                     ->toArray(), $roles)) > 0;
+                    //--array_intersect adalah mengembalikan semua array yang mengandung fungsi array tersebut
                 });
             }
         }

@@ -43,7 +43,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        // abort_if(Gate::denies('role_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('role_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         
         $role = Role::orderBy('created_at', 'desc')->get();
 
@@ -87,7 +87,7 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        // abort_if(Gate::denies('role_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('role_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         // need more notes here
         $role->load('permission');
@@ -103,7 +103,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        // abort_if(Gate::denies('role_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('role_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         // need more notes here
         $permission = Permission::all();
