@@ -25,9 +25,9 @@ class Event extends Model
     // declare fillable
     protected $fillable = [
         'user_id',
+        'category_id',
         'name',
         'instance',
-        'category',
         'invite_group_link',
         'date_is_held',
         'description',
@@ -46,9 +46,9 @@ class Event extends Model
     } 
 
     // one to many
-    public function request_event()
+    public function category()
     {
         // 3 parameters (path models ,field foreign key dan field primary key dari tabel hasmany/hasone)
-        return $this->hasMany('App\Models\Operational\RequestEvent.php','request_event_id','id');
+        return $this->belongsTo('App\Models\MasterData\Category','category_id','id');
     }  
 }

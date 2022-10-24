@@ -15,6 +15,7 @@ use Auth;
 
 use App\Models\User;
 use App\Models\Operational\RequestEvent;
+use app\Models\MasterData\Category;
 
 class AddEventController extends Controller
 {
@@ -37,7 +38,9 @@ class AddEventController extends Controller
      */
     public function index()
     {
-        return abort(404);
+        $category = Category::orderBy('name', 'asc')->get();
+
+        return view('pages.frontsite.master-data.event.index', compact('event', 'category'));
     }
 
     /**
@@ -59,6 +62,7 @@ class AddEventController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $category = Category::orderBy('name', 'asc')->get();
 
         $request_event = new RequestEvent;
         $request_event->user_id = Auth::user()->id;
@@ -95,7 +99,7 @@ class AddEventController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::orderBy('name', 'asc')->get();
     }
 
     /**

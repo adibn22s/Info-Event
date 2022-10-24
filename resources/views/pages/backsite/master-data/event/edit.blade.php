@@ -144,22 +144,6 @@
                                                             @endif
                                                         </div>
                                                     </div>
-                                                    
-
-                                          
-
-                                                <div class="form-group row">
-                                                    <label class="col-md-3 label-control" for="poster">Poster <code
-                                                            style="color:red;">required</code></label>
-                                                    <div class="col-md-9 mx-auto">
-                                                        <div class="custom-file">
-                                                            <input type="file"
-                                                                accept="image/png, image/svg, image/jpeg"
-                                                                class="custom-file-input" id="poster" name="poster"
-                                                                value="{{ old('poster', isset($event) ? $event->poster : '') }}" required>
-                                                            <label class="custom-file-label" for="poster"
-                                                                aria-describedby="poster">Choose File</label>
-                                                        </div>
 
                                                         <p class="text-muted"><small class="text-danger">Hanya dapat
                                                                 mengunggah 1 file</small><small> dan yang dapat

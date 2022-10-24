@@ -57,6 +57,13 @@
                                 </a>
                             </li>
                         {{-- @endcan --}}
+                         {{-- @can('category_access') --}}
+                         <li class="{{ request()->is('backsite/category') || request()->is('backsite/category/*') || request()->is('backsite/*/category') || request()->is('backsite/*/category/*') ? 'active' : '' }} ">
+                            <a class="menu-item" href="{{ route('backsite.category.index') }}">
+                                <i></i><span>Category</span>
+                            </a>
+                        </li>
+                    {{-- @endcan --}}
 
                     </ul>
                 </li>

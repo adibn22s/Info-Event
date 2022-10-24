@@ -16,6 +16,7 @@ use App\Http\Controllers\Backsite\UserController;
 use App\Http\Controllers\Backsite\TypeUserController;
 use App\Http\Controllers\Backsite\ReportEventController;
 use App\Http\Controllers\Backsite\RequestEventController;
+use App\Http\Controllers\Backsite\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +68,8 @@ Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['aut
 
     // request event backsite
     Route::resource('request-event', RequestEventController::class);
+    // category backsite
+    Route::resource('category', CategoryController::class);
 
 });
 // Route::get('/', function () {

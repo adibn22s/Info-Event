@@ -13,10 +13,10 @@
 
               @csrf
             <label id="label1" class="text-white text-2xl mb-3 "><b>Event Title</b></label>
-            <input type="text" id="event_name" name="event_name" class="glassy-text " value="{{ old('event_name') }}" autocomplete="off" required>
-                @if ($errors->has('event_name'))
+            <input type="text" id="name" name="name" class="glassy-text " value="{{ old('name') }}" autocomplete="off" required>
+                @if ($errors->has('name'))
                     <p style="font-semibold color: red;">
-                    {{ $errors->first('event_name') }}</p>
+                    {{ $errors->first('name') }}</p>
                 @endif<br>
             <label id="label1" class="text-white text-2xl mb-3 "><b>Instance</b></label>
             <input type="text" id="instance" name="instance" class="glassy-text " value="{{ old('instance') }}" autocomplete="off" required>
@@ -37,17 +37,29 @@
             @endif
             <br>
 
-            <label id="label1" class="text-white text-2xl mb-3 "><b>Category</b></label>
-            <select id="countries label2" class="glassy-text text-white">
-                <option name="category" id="category" required>Choose a Category</option>
-                <option value="1" id="label2" class="text-black glassy-text">Webinar</option>
-                <option value="2" id="label2" class="text-black glassy-text">Workshop</option>
-                <option value="3" id="label2" class="text-black glassy-text">Job Fair</option>
-                </select>
-                @if ($errors->has('category'))
-                    <p style="font-style: bold; color: red;">
-                    {{ $errors->first('category') }}</p>
-                @endif
+                <div>
+                <label id="label1" class="text-white text-2xl mb-3 ">Category </label>
+                    <select name="category" id="category" class="glassy-text"
+                        required>
+                        <option value="{{ '' }}" class="text-white" disabled selected>Choose
+                        </option>
+
+                        <option value="Webinar"> Webinar
+                        </option>
+                        <option value="Workshop"> Workshop
+                        </option>
+                        <option value="JobFair"> Job Fair
+                        </option>
+
+                    </select>
+
+                    @if ($errors->has('category'))
+                        <p style="font-style: bold; color: red;">
+                            {{ $errors->first('category') }}</p>
+                    @endif
+                </div>
+            
+
             <br>
            
             <label id="label1" class="text-white text-2xl mb-3 " ><b>Invite Link</b></b></label>

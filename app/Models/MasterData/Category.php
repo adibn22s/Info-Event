@@ -30,16 +30,11 @@ class Category extends Model
      ];
 
     // one to many
-    public function doctor()
+    public function event()
     {
         // 2 parameter (path model, field foreign key)
         return $this->hasMany('App\Models\MasterData\Event', 'category_id');
     }
 
-    // one to many
-    public function category()
-    {
-        // 3 parameter (path model, field foreign key, field primary key from table hasMany/hasOne)
-        return $this->belongsTo('App\Models\MasterData\category', 'category_id', 'id');
-    }
+   
 }

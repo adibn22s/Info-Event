@@ -11,11 +11,11 @@
                     <div class="grid grid-cols-2 grid-flow-col gap-4">
                         <button
                             class="mt-12 ml-24 mr-10 h-10 text-indigo-100 transition-colors duration-150 backdrop-blur-sm rounded-full hover:bg-white/20">
-                            {{ $events->category }}
+                            {{ $events->category->name ?? "" }}
                         </button>
                         <button
                             class="mt-12 mr-24 ml-10 text-indigo-100 transition-colors duration-150 backdrop-blur-sm rounded-full hover:bg-white/20">
-                            {{ $events->category }}
+                            {{ $events->category->name ?? "" }}
                         </button>
                     </div>
                     <h3 class="mt-7 mb-5 text-center text-2xl font-semibold text-white">{{ $events->name }}</h3>

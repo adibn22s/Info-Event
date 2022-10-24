@@ -259,6 +259,7 @@
                                                 <tr>
                                                     <th>Date</th>
                                                     <th>Name</th>
+                                                    <th>Poster</th>
                                                     <th style="text-align:center; width:150px;">Action</th>
                                                 </tr>
                                             </thead>
@@ -268,6 +269,7 @@
                                                         <td>{{ isset($event_item->created_at) ? date('d/m/Y H:i:s', strtotime($event_item->created_at)) : '' }}
                                                         </td>
                                                         <td>{{ $event_item->name ?? '' }}</td>
+                                                        <td><a data-fancybox="gallery" data-src="{{ request()->getSchemeAndHttpHost().'/storage'.'/'.$event_item->poster }}" class="blue accent-4 text-center">Show</a></td>
                                                         <td class="text-center">
 
                                                             <div class="btn-group mr-1 mb-1">
@@ -340,7 +342,21 @@
 
 @endsection
 
+@push('after-style')
+    <link rel="stylesheet" href="{{ url('https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css') }}">
+
+    <style>
+        .label {
+            cursor: pointer;
+        }
+        .img-container img {
+            max-width: 100%;
+        }
+    </style>
+@endpush
+
 @push('after-script')
+<script src="{{ url('https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js') }}" type="text/javascript"></script>
     <script>
         jQuery(document).ready(function($) {
             $('#mymodal').on('show.bs.modal', function(e) {
@@ -372,6 +388,11 @@
                 [5, 10, 25, 50, 100, "All"]
             ],
             "pageLength": 10
+        });
+
+        // fancybox
+        Fancybox.bind('[data-fancybox="gallery"]', {
+            infinite: false
         });
     </script>
 

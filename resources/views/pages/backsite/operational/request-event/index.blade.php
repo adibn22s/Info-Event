@@ -146,7 +146,9 @@
 
 @push('after-script')
     {{-- inputmask --}}
-    
+    <script src="{{ asset('/assets/backsite/third-party/inputmask/dist/jquery.inputmask.js') }}"></script>
+    <script src="{{ asset('/assets/backsite/third-party/inputmask/dist/inputmask.js') }}"></script>
+    <script src="{{ asset('/assets/backsite/third-party/inputmask/dist/bindings/inputmask.binding.js') }}"></script>
 
     <script src="{{ url('https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js') }}" type="text/javascript"></script>
 
@@ -180,7 +182,9 @@
             "pageLength": 10
         });
 
-        
+        $(function() {
+            $(":input").inputmask();
+        });
 
         // fancybox
         Fancybox.bind('[data-fancybox="gallery"]', {
