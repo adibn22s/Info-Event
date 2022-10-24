@@ -24,9 +24,15 @@ class Event extends Model
 
     // declare fillable
     protected $fillable = [
-        'request_event_id',
+        'user_id',
         'name',
+        'instance',
+        'category',
+        'invite_group_link',
+        'date_is_held',
+        'description',
         'poster',
+        'status',
         'created_at',
         'updated_at',
         'deleted_at',

@@ -4,7 +4,7 @@
         <th>Poster</th>
         <td>
             <img src="
-                @if ($doctor->photo != "")
+                @if ($request_event->poster != "")
                     @if(File::exists('storage/'.$request_event->poster))
                         {{ url(Storage::url($request_event->poster)) }}
                     @else

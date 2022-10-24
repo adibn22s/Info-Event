@@ -28,12 +28,12 @@
             {{-- breadcumb --}}
             <div class="content-header row">
                 <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
-                    <h3 class="content-header-title mb-0 d-inline-block">request_event</h3>
+                    <h3 class="content-header-title mb-0 d-inline-block">Request Event</h3>
                     <div class="row breadcrumbs-top d-inline-block">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('backsite.dashboard.index') }}">Dashboard</a></li>
-                                <li class="breadcrumb-item active">request_event</li>
+                                <li class="breadcrumb-item active">Request Event</li>
                             </ol>
                         </div>
                     </div>
@@ -70,48 +70,31 @@
                                                             <th>Date</th>
                                                             <th>Name</th>
                                                             <th>User</th>
-                                                            <th>Role</th>
                                                             <th>Instance</th>
                                                             <th>Category</th>
                                                             <th>Link</th>
                                                             <th>Date</th>
                                                             <th>Description</th>
                                                             <th>Poster</th>
+                                                            <th style="text-align:center; width:150px;">Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         @forelse($request_event as $key => $request_event_item)
                                                             <tr data-entry-id="{{ $request_event_item->id }}">
                                                                 <td>{{ isset($request_event_item->created_at) ? date("d/m/Y H:i:s",strtotime($request_event_item->created_at)) : '' }}</td>
-                                                                <td>{{ $request_event_item->name ?? '' }}</td>
-                                                                <td>{{ $request_event_item->user->name ?? '' }}</td>
-                                                                <td>{{ $request_event_item->role ?? '' }}</td>
+                                                                <td>{{ $request_event_item->event_name ?? '' }}</td>
+                                                                <td>{{ $request_event_item->users->name ?? '' }}</td>
                                                                 <td>{{ $request_event_item->instance ?? '' }}</td>
-                                                                <td>{{ $request_event_item->category ?? '' }}</td>
-                                                                <td>{{ $request_event_item->invite_grup_link ?? '' }}</td>
-                                                                <td>{{ $request_event_item->date_is_held ?? '' }}</td>
+                                                                <td>{{ $request_event_item->category->name ?? '' }}</td>
+                                                                <td>{{ $request_event_item->invite_group_link ?? '' }}</td>
+                                                                <td>{{ $request_event_item->date_is_held ? date("d/m/Y ",strtotime($request_event_item->date_is_held)) : '' }}</td>
                                                                 <td>{{ $request_event_item->description ?? '' }}</td>
                                                                 <td>{{ $request_event_item->poster ?? '' }}</td>
-                                                                <td>
-                                                                    @if($request_event_item->level == 1)
-                                                                        <span class="badge badge-info">{{ 'Low' }}</span>
-                                                                    @elseif($request_event_item->level == 2)
-                                                                        <span class="badge badge-warning">{{ 'Medium' }}</span>
-                                                                    @elseif($request_event_item->level == 3)
-                                                                        <span class="badge badge-danger">{{ 'High' }}</span>
-                                                                    @endif
-                                                                </td>
+                                                                <td><a data-fancybox="gallery" data-src="{{ request()->getSchemeAndHttpHost().'/storage'.'/'.$request_event_item->poster }}" class="blue accent-4 text-center">Show</a></td>
                                                                 <td>{{ isset($request_event_item->date) ? date("d/m/Y",strtotime($request_event_item->date)) : '' }}</td>
                                                                 <td>{{ isset($request_event_item->time) ? date("H:i:s",strtotime($request_event_item->time)) : '' }}</td>
-                                                                <td>
-                                                                    @if($request_event_item->status == 1)
-                                                                        <span class="badge badge-success">{{ 'Payment Completed' }}</span>
-                                                                    @elseif($request_event_item->status == 2)
-                                                                        <span class="badge badge-warning">{{ 'Waiting Payment' }}</span>
-                                                                    @else
-                                                                        <span>{{ 'N/A' }}</span>
-                                                                    @endif
-                                                                </td>
+                                                                
                                                             </tr>
                                                         @empty
                                                             {{-- not found --}}
@@ -122,7 +105,6 @@
                                                             <th>Date</th>
                                                             <th>Name</th>
                                                             <th>User</th>
-                                                            <th>Role</th>
                                                             <th>Instance</th>
                                                             <th>Category</th>
                                                             <th>Link</th>
@@ -149,13 +131,76 @@
 
 @endsection
 
+@push('after-style')
+    <link rel="stylesheet" href="{{ url('https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css') }}">
+
+    <style>
+        .label {
+            cursor: pointer;
+        }
+        .img-container img {
+            max-width: 100%;
+        }
+    </style>
+@endpush
+
 @push('after-script')
+    {{-- inputmask --}}
+    
+
+    <script src="{{ url('https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js') }}" type="text/javascript"></script>
+
     <script>
+        jQuery(document).ready(function($){
+            $('#mymodal').on('show.bs.modal', function(e){
+                var button = $(e.relatedTarget);
+                var modal = $(this);
+
+                modal.find('.modal-body').load(button.data("remote"));
+                modal.find('.modal-title').html(button.data("title"));
+            });
+
+            $('.select-all').click(function () {
+                let $select2 = $(this).parent().siblings('.select2-full-bg')
+                $select2.find('option').prop('selected', 'selected')
+                $select2.trigger('change')
+            })
+
+            $('.deselect-all').click(function () {
+                let $select2 = $(this).parent().siblings('.select2-full-bg')
+                $select2.find('option').prop('selected', '')
+                $select2.trigger('change')
+            })
+        });
+
         $('.default-table').DataTable( {
             "order": [],
             "paging": true,
             "lengthMenu": [ [5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"] ],
             "pageLength": 10
         });
+
+        
+
+        // fancybox
+        Fancybox.bind('[data-fancybox="gallery"]', {
+            infinite: false
+        });
     </script>
+
+    <div class="modal fade" id="mymodal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button class="btn close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <i class="fa fa-spinner fa spin"></i>
+                </div>
+            </div>
+        </div>
+    </div>
 @endpush

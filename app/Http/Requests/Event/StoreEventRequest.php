@@ -30,12 +30,8 @@ class StoreEventRequest extends FormRequest
     public function rules()
     {
         return [
-            'request_event_id' => [
-                'required', 'integer', 
-            ],
-            'user_id' => [
-                'required', 'integer',
-            ],
+
+            
             'name' => [
                 'required', 'string', 'max:255','unique:event',
             ],

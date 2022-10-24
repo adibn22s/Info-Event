@@ -76,6 +76,9 @@ class ReportEventController extends Controller
         // get all request from frontsite
         $data = $request->all();
 
+        $data['user_id'] = Auth::user()->id;
+        $data['status'] = 1;
+
 
         // upload process here
         $path = public_path('app/public/assets/file-event');
@@ -125,7 +128,7 @@ class ReportEventController extends Controller
         // for select2 = ascending a to z
         $request_event = RequestEvent::orderBy('event_name', 'asc')->get();
 
-        return view('pages.backsite.master-data.event.edit', compact('event', 'RequestEvent'));
+        return view('pages.backsite.master-data.event.edit', compact('event'));
     }
 
     /**

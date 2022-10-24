@@ -14,11 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::table('event', function (Blueprint $table) {
-            $table->foreign('request_event_id','fk_event_to_request_event')
-            ->references('id')->on('request_event')->onDelete('cascade')
-            ->onUpdate('cascade');
             $table->foreign('user_id','fk_event_to_users')
             ->references('id')->on('users')->onDelete('cascade')
+            ->onUpdate('cascade');
+            
+            $table->foreign('category_id','fk_event_to_category')
+            ->references('id')->on('category')->onDelete('cascade')
             ->onUpdate('cascade');
         });
     }
@@ -31,8 +32,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('event', function (Blueprint $table) {
-            $table->dropForeign('fk_event_to_request_event');
             $table->dropForeign('fk_event_to_users');
+            $table->dropForeign('fk_event_to_category');
         });
     }
 };

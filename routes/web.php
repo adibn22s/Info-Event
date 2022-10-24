@@ -6,6 +6,7 @@ use App\Http\Controllers\Frontsite\LandingController;
 use App\Http\Controllers\Frontsite\AddEventController;
 use App\Http\Controllers\Frontsite\SuccessAddController;
 use App\Http\Controllers\Frontsite\EventController;
+use App\Http\Controllers\Frontsite\ReqEventController;
 
 // backsite 
 use App\Http\Controllers\Backsite\DashboardController;
@@ -38,9 +39,10 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     // Detail event   
     Route::resource('Detail-Event', DetailEventController::class);
     //add event
-    Route::resource('Add-Event', AddEventController::class);
+    Route::resource('add-event.store', AddEventController::class);
+    Route::resource('Add-Event', ReqEventController::class);
     // sucess
-    Route::resource('Add/success', SuccessAddController::class);
+    Route::resource('added-success', SuccessAddController::class);
 });
 
 Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['auth:sanctum', 'verified']], function () {

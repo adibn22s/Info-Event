@@ -27,18 +27,12 @@ class UpdateEventRequest extends FormRequest
     public function rules()
     {
         return [
-            'request_event_id' => [
-                'required', 'integer', 
-            ],
-            'user_id' => [
-                'required', 'integer',
-            ],
             'name' => [
-                'required', 'string', 'max:255',Rule::unique('event')->ignore($this->event),
+                'required', 'string', 'max:255',
             ],
             'poster' => [
                 'nullable', 'mimes:jpeg,svg,png', 'max:10000',
-            ]
+            ],
         ];
     }
 }

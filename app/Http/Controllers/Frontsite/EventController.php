@@ -24,7 +24,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        return view('pages.frontsite.event.index');
+        $event = Event::where('status', '2')->orderBy('created_at', 'desc')->get();
+        return view('pages.frontsite.event.index', compact('event'));
     }
 
     /**

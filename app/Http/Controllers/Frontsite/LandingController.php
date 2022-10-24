@@ -25,6 +25,7 @@ class LandingController extends Controller
      */
     public function index()
     {
+        $event = Event::where('status', '2')->orderBy('created_at', 'desc')->get();
         return view('pages.frontsite.landing-page.index');
     }
 

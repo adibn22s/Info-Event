@@ -8,29 +8,84 @@
      <div id="form1">
         <br>
         <h1 class="text-4xl text-white "><b>Let's share your Event!</b></h1><br><br>
-        <form>
-            <label id="label1" class="text-white text-2xl mb-3 "><b>Organizer</b></label>
-            <input type="text" class="glassy-text "><br>
+        <form  method="POST" action="{{ route('Add-Event.store') }}"
+              enctype="multipart/form-data">
+
+              @csrf
             <label id="label1" class="text-white text-2xl mb-3 "><b>Event Title</b></label>
-            <input type="text" class="glassy-text "><br>
-            <label id="label1" class="text-white text-2xl mb-3 "><b>Event Category</b></label>
-            <input type="radio" name="r1">
-            <label id="label2" class="text-white ">Webinar</label>
-            <input type="radio" name="r1">
-            <label id="label2" class="text-white ">Workshop</label>
-            <input type="radio" name="r1" class="ml-4">
-            <label id="label2" class="text-white ">Job Fair</label><br>
-            <label id="label1" class="text-white text-2xl mb-3 "><b>Date and Time</b></label>
-            <input type="text" class="glassy-text "><br>
-            <label id="label1" class="text-white text-2xl mb-3 "><b>Registration</b></label>
-            <input type="radio" name="r2">
-            <label id="label2" class="text-white ">Free</label>
-            <input type="radio" name="r2">
-            <label id="label2" class="text-white ">Paid</label><br>
-            <label id="label1" class="text-white text-2xl mb-5 "><b>Location</b></label>
-            <input type="text" class="glassy-text "><br>
+            <input type="text" id="event_name" name="event_name" class="glassy-text " value="{{ old('event_name') }}" autocomplete="off" required>
+                @if ($errors->has('event_name'))
+                    <p style="font-semibold color: red;">
+                    {{ $errors->first('event_name') }}</p>
+                @endif<br>
+            <label id="label1" class="text-white text-2xl mb-3 "><b>Instance</b></label>
+            <input type="text" id="instance" name="instance" class="glassy-text " value="{{ old('instance') }}" autocomplete="off" required>
+            
+            @if ($errors->has('instance'))
+            <p style="font-semibold color: red;">
+                {{ $errors->first('instance') }}</p>
+            @endif
+
+            <br>
+            <label id="label1" class="text-white text-2xl mb-3 "><b>Date Event</b></label>
+            <input type="text" id="date_is_held" name="date_is_held" class="glassy-text" placeholder="2022-01-20"
+            value="{{ old('date_is_held') }}" autocomplete="off" required>
+
+            @if ($errors->has('date_is_held'))
+                 <p style="font-semibold color: red;">
+                {{ $errors->first('date_is_held') }}</p>
+            @endif
+            <br>
+
+            <label id="label1" class="text-white text-2xl mb-3 "><b>Category</b></label>
+            <select id="countries label2" class="glassy-text text-white">
+                <option name="category" id="category" required>Choose a Category</option>
+                <option value="1" id="label2" class="text-black glassy-text">Webinar</option>
+                <option value="2" id="label2" class="text-black glassy-text">Workshop</option>
+                <option value="3" id="label2" class="text-black glassy-text">Job Fair</option>
+                </select>
+                @if ($errors->has('category'))
+                    <p style="font-style: bold; color: red;">
+                    {{ $errors->first('category') }}</p>
+                @endif
+            <br>
+           
+            <label id="label1" class="text-white text-2xl mb-3 " ><b>Invite Link</b></b></label>
+            <input type="text" id="invite_group_link"
+            name="invite_group_link" 
+            placeholder="https://forms.gle/DLf4gJGmL8wpsfhf9"
+            value="{{ old('invite_group_link') }}" autocomplete="off"
+            required class="glassy-text ">
+
+            @if ($errors->has('invite_group_link'))
+                 <p style="font-style: bold; color: red;">
+                  {{ $errors->first('invite_group_link') }}</p>
+            @endif
+            
+            <br>
+
             <label id="label1" class="text-white text-2xl mb-3 "><b>Event Description</b></label>
-            <input type="text" class="glassy-text " style="height:120px; vertical-align:text-top"><br>
+            <input type="text" id="description" name="description"
+            placeholder="A-Z" class="glassy-text " style="height:120px; vertical-align:text-top"
+            value="{{ old('description') }}" autocomplete="off" required class="glassy-text ">
+            @if ($errors->has('description'))
+            <p style="font-style: bold; color: red;">
+                {{ $errors->first('description') }}</p>
+            @endif
+            <br>
+            <label id="label1" for="poster"
+            aria-describedby="poster"
+            class="text-white text-2xl mb-5 "><b>Event Poster</b></label>
+            <input type="file"
+            accept="image/png, image/svg, image/jpeg"
+            class="custom-file-input" id="poster" name="poster"
+            required>
+
+            @if ($errors->has('poster'))
+                 <p style="font-style: bold; color: red;">
+                  {{ $errors->first('poster') }}</p>
+             @endif
+            
             <button id="Button1" class=" text-white text-2xl mb-10 border-2 border-white rounded-xl hover:bg-slate-100 hover:text-sky-900">  Submit Form  </button><br>
         </form>
     </div>

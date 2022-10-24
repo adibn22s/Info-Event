@@ -1,38 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Backsite;
+namespace App\Http\Controllers\Frontsite;
 
 use App\Http\Controllers\Controller;
-
-// use library here
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Operational\RequestEvent;
+
+use App\Http\Requests\RequestEvent\StoreRequestEventRequest;
 
 // use everything here
 use Gate;
 use Auth;
+use File;
 
-// use model here
-use App\Models\Operational\RequestEvent;
-use App\Models\User;
-use App\Models\MasterData\Event;
-use App\Models\ManagementAccess\DetailUser;
-use App\Models\MasterData\TypeUser;
-
-// thirdparty package
-
-class RequestEventController extends Controller
+class ReqEventController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -40,19 +25,7 @@ class RequestEventController extends Controller
      */
     public function index()
     {
-        abort_if(Gate::denies('request_event_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $type_user_condition = Auth::user()->detail_user->type_user_id;
-
-        if($type_user_condition == 1){
-            // for admin
-            $request_event = RequestEvent::orderBy('created_at', 'desc')->get();
-        }else{
-            // other admin for doctor & patient ( task for everyone here )
-            $request_event = RequestEvent::orderBy('created_at', 'desc')->get();
-        }
-
-        return view('pages.backsite.operational.request-event.index', compact('request_event'));
+        return view('pages.frontsite.add-event.index');
     }
 
     /**
@@ -73,7 +46,32 @@ class RequestEventController extends Controller
      */
     public function store(Request $request)
     {
-        return abort(404);
+        // get all request from frontsite
+        $data = $request->all();
+
+        $data['user_id'] = Auth::user()->id;
+
+
+        // upload process here
+        $path = public_path('app/public/assets/file-req');
+        if(!File::isDirectory($path)){
+            $response = Storage::makeDirectory('public/assets/file-req');
+        }
+
+        // change file locations
+        if(isset($data['poster'])){
+            $data['poster'] = $request->file('poster')->store(
+                'assets/file-req', 'public'
+            );
+        }else{
+            $data['poster'] = "";
+        }
+
+        // store to database
+        $request_event = RequestEvent::create($data);
+
+        alert()->success('Success Message', 'Successfully added new event');
+        return redirect()->route('Event', $request_event->id);
     }
 
     /**

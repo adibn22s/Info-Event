@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Frontsite;
 
-use App\Http\Controllers\Controller;// use library here
+use App\Http\Controllers\Controller;
+
+// use library here
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\DB;
 
 // use everything here
 // use Gate;
@@ -13,7 +15,6 @@ use Auth;
 
 use App\Models\User;
 use App\Models\Operational\RequestEvent;
-use App\Models\MasterData\Event;
 
 class AddEventController extends Controller
 {
@@ -36,7 +37,7 @@ class AddEventController extends Controller
      */
     public function index()
     {
-        return view('pages.frontsite.add-event.index');
+        return abort(404);
     }
 
     /**
@@ -57,9 +58,24 @@ class AddEventController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $data = $request->all();
 
+        $request_event = new RequestEvent;
+        $request_event->user_id = Auth::user()->id;
+        $request_event->category_id = $data['category_id'];
+        $request_event->name = $data['name'];
+        $request_event->instance = $data['instance'];
+        $request_event->date = $data['date_is_held'];
+        $request_event->invite_group_link = $data['invite_group_link'];
+        $request_event->description = $data['description'];
+        $request_event->poster = $data['poster'];
+        $request_event->time = $data['time'];
+        $request_event->status = 2; // set to verification
+        $request_event->save();
+
+        return redirect()->route('adedd-success', $request_event->id);
+    }
+   
     /**
      * Display the specified resource.
      *
