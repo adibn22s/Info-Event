@@ -266,8 +266,7 @@
                                             <tbody>
                                                 @forelse($event as $key => $event_item)
                                                     <tr data-entry-id="{{ $event_item->id }}">
-                                                        <td>{{ isset($event_item->created_at) ? date('d/m/Y H:i:s', strtotime($event_item->created_at)) : '' }}
-                                                        </td>
+                                                        <td>{{ isset($event_item->date_is_held) ? date('d/m/Y', strtotime($event_item->date_is_held)) : '' }}</td>
                                                         <td>{{ $event_item->name ?? '' }}</td>
                                                         <td><a data-fancybox="gallery" data-src="{{ request()->getSchemeAndHttpHost().'/storage'.'/'.$event_item->poster }}" class="blue accent-4 text-center">Show</a></td>
                                                         <td class="text-center">

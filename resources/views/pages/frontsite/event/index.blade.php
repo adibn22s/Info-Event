@@ -11,18 +11,18 @@
                     <div class="grid grid-cols-2 grid-flow-col gap-4">
                         <button
                             class="mt-12 ml-24 mr-10 h-10 text-indigo-100 transition-colors duration-150 backdrop-blur-sm rounded-full hover:bg-white/20">
-                            {{ $events->category->name ?? "" }}
+                            {{ $events->category_id->name ?? '' }}
                         </button>
                         <button
                             class="mt-12 mr-24 ml-10 text-indigo-100 transition-colors duration-150 backdrop-blur-sm rounded-full hover:bg-white/20">
-                            {{ $events->category->name ?? "" }}
+                            {{ $events->instance}}
                         </button>
                     </div>
                     <h3 class="mt-7 mb-5 text-center text-2xl font-semibold text-white">{{ $events->name }}</h3>
                     <div ><img src="{{ url(Storage::url($events->poster)) }}" class="h-full w-80 aspect-square rounded-3xl ml-28 mb-8 mx-auto" alt=""></div>
                     <button
                         class="mb-16 ml-56 mt-7 mr-56 h-10 content-place-center text-indigo-100 transition-colors duration-150 backdrop-blur-sm rounded-full hover:bg-white/20">
-                        Detail
+                        <a href="{{ route('detail-event.event', $events->id) }}">Detail</a>
                     </button>
                 </div>
             @empty

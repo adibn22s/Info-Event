@@ -12,7 +12,8 @@
 
     </head>
     <body class="background">
-
+        @include('sweetalert::alert')
+        
         @include('components.frontsite.header')
             @yield('content')
 

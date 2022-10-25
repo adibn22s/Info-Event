@@ -21,6 +21,9 @@ return new class extends Migration
             ->index('fk_doctor_to_category');
             $table->string('name')->nullable();
             $table->string('instance')->nullable();
+            $table->string('time')->nullable();
+            $table->string('location')->nullable();
+            $table->string('registration')->nullable();
             $table->enum('category',[1,2,3]);
             $table->string('invite_group_link')->nullable();
             $table->date('date_is_held')->nullable();

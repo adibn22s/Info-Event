@@ -3,18 +3,20 @@
 namespace App\Http\Controllers\Frontsite;
 
 use App\Http\Controllers\Controller;
-
-// use library here
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Operational\RequestEvent;
+use App\Models\MasterData\Event;
+use App\Models\MasterData\Category;
+
+use App\Http\Requests\RequestEvent\StoreEventRequest;
 
 // use everything here
-// use Gate;
+use Gate;
 use Auth;
-
-// use model here
-use App\Models\User;
+use File;
 
 class SuccessAddController extends Controller
 {
@@ -46,7 +48,33 @@ class SuccessAddController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // get all request from frontsite
+        $data = $request->all();
+        $data['user_id'] = Auth::user()->id;
+
+       
+
+
+        // upload process here
+        $path = public_path('app/public/assets/file-event');
+        if(!File::isDirectory($path)){
+            $response = Storage::makeDirectory('public/assets/file-event');
+        }
+
+        // change file locations
+        if(isset($data['poster'])){
+            $data['poster'] = $request->file('poster')->store(
+                'assets/file-event', 'public'
+            );
+        }else{
+            $data['poster'] = "";
+        }
+
+        // store to database
+        $request_event = Event::create($data);
+
+        alert()->success('Success Message', 'Successfully added new event');
+        return redirect()->route('add.success', $request_event->id);
     }
 
     /**

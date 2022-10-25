@@ -38,12 +38,15 @@ Route::resource('Event',EventController::class);
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
     // Detail event   
+    Route::get('Detail-Event/Event/{id}', [DetailEventController::class, 'detailevent'])->name('detail-event.event');
     Route::resource('Detail-Event', DetailEventController::class);
+   
     //add event
     Route::resource('add-event.store', AddEventController::class);
     Route::resource('Add-Event', ReqEventController::class);
     // sucess
     Route::resource('added-success', SuccessAddController::class);
+    // Route::get('added-success/{id}', SuccessAddController::class, 'show')->name('added-success.show');
 });
 
 Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['auth:sanctum', 'verified']], function () {

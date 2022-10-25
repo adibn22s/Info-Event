@@ -22,6 +22,7 @@ use File;
 // use model here
 use App\Models\Operational\RequestEvent;
 use App\Models\MasterData\Event;
+use App\Models\MasterData\Category;
 
 // thirdparty package
 
@@ -126,9 +127,10 @@ class ReportEventController extends Controller
         abort_if(Gate::denies('event_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         // for select2 = ascending a to z
+        $category = Category::orderBy('name', 'asc')->get();
         $request_event = RequestEvent::orderBy('event_name', 'asc')->get();
 
-        return view('pages.backsite.master-data.event.edit', compact('event'));
+        return view('pages.backsite.master-data.event.edit', compact('event','category'));
     }
 
     /**

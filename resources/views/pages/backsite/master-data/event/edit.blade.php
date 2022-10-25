@@ -91,26 +91,29 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
-                                                        <label class="col-md-3 label-control">Category <code
-                                                                style="color:red;">required</code></label>
+                                                        <label class="col-md-3 label-control" for="time">time <code style="color:red;">required</code></label>
                                                         <div class="col-md-9 mx-auto">
-                                                            <select name="category" id="category" class="form-control select2"
-                                                                required>
-                                                                <option value="{{ old('category', isset($event) ? $event->category : '') }}" disabled selected>Webinar,Workshop,Job Fair
-                                                                </option>
-    
-                                                                <option value="1"> Webinar
-                                                                </option>
-                                                                <option value="2"> Workshop
-                                                                </option>
-                                                                <option value="3"> Job Fair
-                                                                </option>
-    
+                                                            <input type="text" id="time" name="time" class="form-control" placeholder="Gojek,Tokopedia,your Company" value="{{ old('time', isset($event) ? $event->time : '') }}" autocomplete="off" required>
+
+                                                            @if($errors->has('time'))
+                                                                <p style="font-style: bold; color: red;">{{ $errors->first('time') }}</p>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row {{ $errors->has('category_id') ? 'has-error' : '' }}">
+                                                        <label class="col-md-3 label-control">Category <code style="color:red;">required</code></label>
+                                                        <div class="col-md-9 mx-auto">
+                                                            <select name="category_id"
+                                                                    id="category_id"
+                                                                    class="form-control select2" required>
+                                                                    <option value="{{ '' }}" disabled selected>Choose</option>
+                                                                @foreach($category as $key => $category_item)
+                                                                    <option value="{{ $category_item->id }}">{{ $category_item->name }}</option>
+                                                                @endforeach
                                                             </select>
-    
-                                                            @if ($errors->has('category'))
-                                                                <p style="font-style: bold; color: red;">
-                                                                    {{ $errors->first('category') }}</p>
+
+                                                            @if($errors->has('category_id'))
+                                                                <p style="font-style: bold; color: red;">{{ $errors->first('category_id') }}</p>
                                                             @endif
                                                         </div>
                                                     </div>

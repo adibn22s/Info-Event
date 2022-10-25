@@ -66,7 +66,7 @@ class DetailEventController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -101,5 +101,13 @@ class DetailEventController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    // custom
+    public function detailevent($id)
+    {
+        $event = Event::where('id',$id)->first();
+
+        return view('pages.frontsite.detail-event.index',compact('event'));
     }
 }

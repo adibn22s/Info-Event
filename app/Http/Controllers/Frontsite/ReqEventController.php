@@ -27,7 +27,7 @@ class ReqEventController extends Controller
      */
     public function index()
     {
-        $category = Category::orderBy('name', 'asc')->get();
+        
 
         return view('pages.frontsite.add-event.index');
     }
@@ -76,8 +76,8 @@ class ReqEventController extends Controller
         // store to database
         $request_event = Event::create($data);
 
-        alert()->success('Success Message', 'Successfully added new event');
-        return redirect()->route('Event', $request_event->id);
+        alert()->success('Success Message', 'Successfully added new event,Let admin accept your event');
+        return redirect()->back();
     }
 
     /**
