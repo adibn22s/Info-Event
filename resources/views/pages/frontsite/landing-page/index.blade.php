@@ -1,106 +1,121 @@
-@extends('layouts.bootstrap')
+@extends('layouts.auth')
 
 @section('title', 'Home')
 
 @section('content')
 
 
-    <div class="container">
-      <div class="glassbox">
-        <div class="row">
-          <div class="col-md-5">
-            <img class="img-fluid" src="{{ asset('assets/frontsite/images/komputer.jpeg') }}" alt="Gambar Komputer" width="600px" />
-          </div>
-          <div class="col-md-6 text-center text-pertama">
-            <div class="row fw-bolder text-white text-atas mx-auto mt-3">
-              <p>DON'T WORRY !</p>
+     <!-- Glass box1 Start -->
+     <section>
+      <div class="container container-1 px-40 mx-auto">
+        <div class="box-event">
+          <div class="grid grid-cols-2 md:gap-0 pr-36">
+            <div class="m-2 mx-auto justify-self-center my-auto kolom-1 object-cover">
+              <img class="gambar-komp my-auto" src="{{ asset('/assets/frontsite/images/komp_info2.png') }}" alt="Gambar komputernya" width="500px" />
             </div>
-            <div class="row fw-semibold text-white text-bawah mt-5">
-              <p>
-                We can accomodate your event <br />
-                for many people to see !
-              </p>
+            <div class="justify-self-center my-auto mx-auto kolom-2">
+              <div class="grid grid-rows-2 text-center left-0 place-self-start items-start">
+                <h1 class="text-white font-bold lg:text-6xl md:text-base mt-5">DON'T WORRY !</h1>
+                <h1 class="text-white font-medium lg:text-3xl md:text-sm mt-10 place-content-end">
+                  We can accomodate your event <br />
+                  for many people to see !
+                </h1>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+    <!-- Glass box1 End -->
 
-
-  <!-- Glass End -->
-  <div class="pemisah"></div>
-  <!-- About Start -->
-  <section>
-    <div class="container mx-auto about">
-      <div class="row justify-content-around about">
-        <div class="col-md-7 text-about text-white mt-5">
-          <p>
-            InfoEvent Website is a platform used to help and share event or programs such as webinars, workshops, and also job fairs. We're trying
-            to help the organizer also people whose trying to get an easy information about an event in such simple way possible. Our goal is to be
-            the number one facilitator for event and programs in Indonesia.
-          </p>
+    <!-- About Start -->
+    <section>
+      <div class="container mx-auto my-56 px-40">
+        <div class="text-3xl font-bold text-white text-about">
+          <h1>ABOUT INFO EVENT</h1>
         </div>
-        <div class="col-md-4">
-          <div>
-            <img class="img-fluid" src="{{ asset('assets/frontsite/images/about-logo4.png') }}" alt="" width="300px" />
+        <div class="grid grid-cols-2">
+          <div class="text-justify my-auto text-white text-description">
+            <p>
+              InfoEvent Website is a platform used to help and share event or programs such as webinars, workshops, and also job fairs. We're trying to help the organizer also people whose trying to get an easy information about an event in
+              such simple way possible. Our goal is to be the number one facilitator for event and programs in Indonesia.
+            </p>
+          </div>
+          <div class="items-center self-center place-content-center place-items-center place-self-center">
+            <div class="infoevent-about">
+              <img src="{{ asset('/assets/frontsite/images/about-logo4.png') }}" alt="Gambar komputernya" />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <!-- About End -->
-  <div class="pemisah"></div>
+    </section>
+    <!-- About End -->
 
-  <!-- Carousel Start -->
-  <div class="glassbox2">
-    <h1 class="text-judul text-white text-center">Documentation</h1>
-    <div id="carouselExampleCaptions" class="carousel slide lebar-carousel mx-auto" data-bs-ride="false">
-      <div class="carousel-indicators">
+    <!-- Documentation -->
+    <section>
+      <h1 class="mx-auto text-center documentation">Documentation</h1>
+      <div id="carouselExampleCaptions" class="carousel mx-auto slide relative" data-bs-ride="carousel">
+        <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+        </div>
+        <div class="carousel-inner relative w-full overflow-hidden object-cover">
+          <div class="carousel-item active relative float-left w-full">
+            <img src="{{ asset('/assets/frontsite/images/webinar.jpeg') }}" class="block w-full" alt="..." />
+          </div>
+          <div class="carousel-item relative float-left w-full">
+            <img src="{{ asset('/assets/frontsite/images/webinar2.jpg') }}" class="block w-full" alt="..." />
+          </div>
+          <div class="carousel-item relative float-left w-full">
+            <img src="{{ asset('/assets/frontsite/images/webinaron.jpeg') }}" class="block w-full" alt="..." />
+          </div>
+          <div class="carousel-item relative float-left w-full">
+            <img src="{{ asset('/assets/frontsite/images/webinar-7.png') }}" class="block w-full" alt="..." />
+          </div>
+          <div class="carousel-item relative float-left w-full">
+            <img src="{{ asset('/assets/frontsite/images/webinar-8.png') }}" class="block w-full" alt="..." />
+          </div>
+        </div>
         <button
+          class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
           type="button"
           data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="0"
-          class="active"
-          aria-current="true"
-          aria-label="Slide 1"
-        ></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="{{ asset('assets/frontsite/images/webinaron.jpeg') }}" class="d-block w-100" alt="..." />
-          <div class="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
-            <p>Some representative placeholder content for the first slide.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="{{ asset('assets/frontsite/images/webinar2.jpeg') }}" class="d-block w-100" alt="..." />
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Second slide label</h5>
-            <p>Some representative placeholder content for the second slide.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="{{ asset('assets/frontsite/images/webinar.jpg') }}" class="d-block w-100" alt="..." />
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Third slide label</h5>
-            <p>Some representative placeholder content for the third slide.</p>
-          </div>
-        </div>
+    </section>
+    <!-- Documentation End -->
+    <div class="pemisah"></div>
+    <!-- Button Add Event -->
+    <h1 class="text-add-event text-center">So Let's Share Your Event !!!</h1>
+
+    <div class="container mx-auto">
+      <div class="">
+        <a href="{{ route('Add-Event.index') }}"
+          ><button class="rounded-full text-center button-add font-bold">
+            Add Your Event <br />
+            Right Now !!
+          </button>
+        </a>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>
-  </div>
-  <!-- Carousel End -->
-  <div class="pemisah"></div>
+
+    <!-- Button Add Event End-->
+    <div class="pemisah"></div>
 
 @endsection

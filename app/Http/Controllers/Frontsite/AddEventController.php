@@ -61,23 +61,7 @@ class AddEventController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $category = Category::orderBy('name', 'asc')->get();
-
-        $request_event = new RequestEvent;
-        $request_event->user_id = Auth::user()->id;
-        $request_event->category_id = $data['category_id'];
-        $request_event->name = $data['name'];
-        $request_event->instance = $data['instance'];
-        $request_event->date = $data['date_is_held'];
-        $request_event->invite_group_link = $data['invite_group_link'];
-        $request_event->description = $data['description'];
-        $request_event->poster = $data['poster'];
-        $request_event->time = $data['time'];
-        $request_event->status = 2; // set to verification
-        $request_event->save();
-
-        return redirect()->route('adedd-success', $request_event->id);
+        //
     }
    
     /**

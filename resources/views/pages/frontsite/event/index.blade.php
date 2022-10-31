@@ -6,12 +6,12 @@
 
     <div class="container">
         <div class=" grid grid-cols-2 gap-14 mt-20">
-            @forelse ($event as $events)
+            @forelse ($event as $key => $events)
                 <div class="backdrop-blur-sm bg-white/20 h-15 aspect-square rounded-3xl ml-20 grid grid-cols-1 mb-10">
                     <div class="grid grid-cols-2 grid-flow-col gap-4">
                         <button
                             class="mt-12 ml-24 mr-10 h-10 text-indigo-100 transition-colors duration-150 backdrop-blur-sm rounded-full hover:bg-white/20">
-                            {{ $events->category_id->name ?? '' }}
+                            {{ $events->category-> name ?? '' }}
                         </button>
                         <button
                             class="mt-12 mr-24 ml-10 text-indigo-100 transition-colors duration-150 backdrop-blur-sm rounded-full hover:bg-white/20">

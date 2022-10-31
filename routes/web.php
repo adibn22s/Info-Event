@@ -42,7 +42,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::resource('Detail-Event', DetailEventController::class);
    
     //add event
-    Route::resource('add-event.store', AddEventController::class);
+    Route::get('Event/added-success',[ReqEventController::class, 'store'])->name('Add-Event.store');
     Route::resource('Add-Event', ReqEventController::class);
     // sucess
     Route::resource('added-success', SuccessAddController::class);

@@ -14,6 +14,7 @@ use Auth;
 use App\Models\User;
 use App\Models\Operational\RequestEvent;
 use App\Models\MasterData\Event;
+use App\Models\MasterData\Category;
 
 class DetailEventController extends Controller
 {
@@ -107,7 +108,8 @@ class DetailEventController extends Controller
     public function detailevent($id)
     {
         $event = Event::where('id',$id)->first();
+        $category = Category::orderBy('name', 'asc')->get();
 
-        return view('pages.frontsite.detail-event.index',compact('event'));
+        return view('pages.frontsite.detail-event.index',compact('event','category'));
     }
 }

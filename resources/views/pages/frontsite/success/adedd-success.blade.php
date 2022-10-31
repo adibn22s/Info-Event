@@ -19,12 +19,14 @@
         </div>
 
         <div id="form3" class="mt-5 grid justify-items-end">
-            <button id="Button2" class="text-center text-sky-900 border-2 border-white rounded-full hover:text-sky-400">
-                <b>
-                    Back to <br>
-                    Homepage
-                </b>
-            </button>
+            <a href="{{ route('index') }}">
+                <button id="Button2" class="text-center text-sky-900 border-2 border-white rounded-full hover:text-sky-400 px-2 py-3 block mx-auto">
+                    <b>
+                        Back to <br>
+                        Homepage
+                    </b>
+                </button>
+            </a>
         </div>
 
 @endsection

@@ -77,7 +77,7 @@ class ReqEventController extends Controller
         $request_event = Event::create($data);
 
         alert()->success('Success Message', 'Successfully added new event,Let admin accept your event');
-        return redirect()->back();
+        return view('pages.frontsite.success.adedd-success',compact('category','request_event','request'));
     }
 
     /**
