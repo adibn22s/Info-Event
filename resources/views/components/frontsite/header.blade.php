@@ -1,11 +1,11 @@
 <!-- Navbar -->
 <nav class="space-x-4 ">
-    <div class="navkiri ml-32 lg:py-8">
+    <div class="navkiri ml-11 mt-5 mb-5 w-max">
       <div class="flex justify-between h-16">
         <div class="flex flex-auto justify-between mr-64">
           <a href="" class="flex-shrink-0 flex"><img class="h-10 lg:h-14 w-auto" src="{{ asset('assets/frontsite/images/logo_infoevent.png') }}" width="50" /></a>
         </div>
-        <div class="navkanan ml-24 mr-10 mb-5 navbar">
+        <div class="navkanan ml-80 mb-5 navbar">
           <a href="{{ route('index') }}" class="px-3 py-2 text-white rounded-lg hover:bg-transparent hover:text-slate-900 font-family:'Poppins' mx-1 text-base">Home</a>
           <a href="{{ ('Event') }}" class="px-3 py-2 text-white rounded-lg hover:bg-transparent hover:text-slate-900 font-family:'Poppins' mx-1 text-base">Event</a>
           <a href="{{ ('Add-Event') }}" class="px-3 py-2 text-white rounded-lg hover:bg-transparent hover:text-slate-900 font-family:'Poppins' mx-1 text-base"
@@ -26,20 +26,20 @@
           </button>
           
         </div>
-      </div>
-    </div>
-    @endguest
+        @endguest
+      
+    
 
           
     @auth
 
     {{-- button authenticated --}}
 
-        <div class="hidden lg:ml-10 lg:flex lg:items-center border-l pl-4 pt-2">
+        <div class="navkanan hidden  lg:flex lg:items-center border-l ">
             <div x-data="{ profileDekstopOpen: false }" class="ml-3 relative">
                 <div>
                     <button type="button"
-                        class="text-white bg-purple-700 hover:bg-purple-800 mt-2 rounded-full flex text-sm focus:outline-none"
+                        class="text-white bg-purple-700 hover:bg-purple-800 mt-2 rounded-full flex text-sm focus:outline-none "
                         id="user-menu-button" aria-expanded="false" aria-haspopup="true"
                         @click="profileDekstopOpen = ! profileDekstopOpen">
                         <!-- focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 -->
@@ -92,5 +92,7 @@
         </div>
 
     @endauth
+  </div>
+</div>
   </nav>
   <!-- End Navbar -->
