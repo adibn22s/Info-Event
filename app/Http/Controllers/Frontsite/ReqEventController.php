@@ -7,9 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Operational\RequestEvent;
 use App\Models\MasterData\Event;
-use App\Models\MasterData\Category;
 
 use App\Http\Requests\RequestEvent\StoreEventRequest;
 
@@ -52,7 +50,7 @@ class ReqEventController extends Controller
     {
         // get all request from frontsite
         $data = $request->all();
-        $category = Category::orderBy('name', 'desc')->get();
+        // $category = Category::orderBy('catname', 'desc')->get();
         $data['user_id'] = Auth::user()->id;
 
        
@@ -76,8 +74,8 @@ class ReqEventController extends Controller
         // store to database
         $request_event = Event::create($data);
 
-        alert()->success('Success Message', 'Successfully added new event,Let admin accept your event');
-        return view('pages.frontsite.success.adedd-success',compact('category','request_event','request'));
+        // alert()->success('Success Message', 'Successfully added new event,Let admin accept your event');
+        return view('pages.frontsite.success.adedd-success',compact('request_event','request'));
     }
 
     /**

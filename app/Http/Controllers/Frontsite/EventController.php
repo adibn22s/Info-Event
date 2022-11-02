@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\DB;
 use Auth;
 
 use App\Models\User;
-use App\Models\Operational\RequestEvent;
 use App\Models\MasterData\Event;
 
 class EventController extends Controller
@@ -25,6 +24,7 @@ class EventController extends Controller
     public function index()
     {
         $event = Event::where('status', '2')->orderBy('created_at', 'desc')->get();
+        // $category = Category::with('event')->get();
         return view('pages.frontsite.event.index', compact('event'));
     }
 

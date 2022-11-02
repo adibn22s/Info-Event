@@ -1,6 +1,6 @@
 <!-- Navbar -->
 <nav class="space-x-4 ">
-    <div class="navkiri ml-11 mt-5 mb-5 w-max">
+    <div class="navkiri ml-11 mt-5 mb-5 pr-8">
       <div class="flex justify-between h-16">
         <div class="flex flex-auto justify-between mr-64">
           <a href="" class="flex-shrink-0 flex"><img class="h-10 lg:h-14 w-auto" src="{{ asset('assets/frontsite/images/logo_infoevent.png') }}" width="50" /></a>
@@ -11,7 +11,7 @@
           <a href="{{ ('Add-Event') }}" class="px-3 py-2 text-white rounded-lg hover:bg-transparent hover:text-slate-900 font-family:'Poppins' mx-1 text-base"
             >Add Event</a
           >
-          <a href="/about" class="px-3 py-2 text-white rounded-lg hover:bg-transparent hover:text-slate-900 font-family:'Poppins' mx-1 text-base">About</a>
+          <a href="#about" class="px-3 py-2 text-white rounded-lg hover:bg-transparent hover:text-slate-900 font-family:'Poppins' mx-1 text-base">About</a>
           
           @guest
           <button

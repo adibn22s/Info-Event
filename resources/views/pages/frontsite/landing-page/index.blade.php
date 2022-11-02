@@ -6,6 +6,7 @@
 
 
      <!-- Glass box1 Start -->
+     <div class="mt-24"></div>
      <section>
       <div class="container container-1 px-40 mx-auto">
         <div class="box-event">
@@ -29,7 +30,7 @@
     <!-- Glass box1 End -->
 
     <!-- About Start -->
-    <section>
+    <section id="about">
       <div class="container mx-auto my-56 px-40">
         <div class="text-3xl font-bold text-white text-about">
           <h1>ABOUT INFO EVENT</h1>
@@ -106,12 +107,12 @@
 
     <div class="container mx-auto">
       <div class="">
-        <a href="{{ route('Add-Event.index') }}"
-          ><button class="rounded-full text-center button-add font-bold">
+        <button class="rounded-full text-center button-add font-bold">
+          <a href="{{ route('Add-Event.index') }}">
             Add Your Event <br />
             Right Now !!
+          </a>
           </button>
-        </a>
       </div>
     </div>
 

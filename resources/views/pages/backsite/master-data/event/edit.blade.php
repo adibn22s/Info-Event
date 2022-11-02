@@ -100,20 +100,27 @@
                                                             @endif
                                                         </div>
                                                     </div>
-                                                    <div class="form-group row {{ $errors->has('category_id') ? 'has-error' : '' }}">
-                                                        <label class="col-md-3 label-control">Category <code style="color:red;">required</code></label>
+                                                    <<div class="form-group row">
+                                                        <label class="col-md-3 label-control">Category <code
+                                                                style="color:red;">required</code></label>
                                                         <div class="col-md-9 mx-auto">
-                                                            <select name="category_id"
-                                                                    id="category_id"
-                                                                    class="form-control select2" required>
-                                                                    <option value="{{ '' }}" disabled selected>Choose</option>
-                                                                @foreach($category as $key => $category_item)
-                                                                    <option value="{{ $category_item->id }}">{{ $category_item->name }}</option>
-                                                                @endforeach
+                                                            <select name="category" id="category" class="form-control select2"
+                                                                required>
+                                                                <option value="{{ old('category', isset($event) ? $event->category : '') }}" disabled selected>Choose
+                                                                </option>
+    
+                                                                <option value="Webinar"> Webinar
+                                                                </option>
+                                                                <option value="Workshop"> Workshop
+                                                                </option>
+                                                                <option value="Job Fair"> Job Fair
+                                                                </option>
+    
                                                             </select>
-
-                                                            @if($errors->has('category_id'))
-                                                                <p style="font-style: bold; color: red;">{{ $errors->first('category_id') }}</p>
+    
+                                                            @if ($errors->has('category'))
+                                                                <p style="font-style: bold; color: red;">
+                                                                    {{ $errors->first('category') }}</p>
                                                             @endif
                                                         </div>
                                                     </div>

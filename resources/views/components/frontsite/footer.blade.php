@@ -7,16 +7,24 @@
             </div>
             <div class="w-full px-4 mb-4 ml-20 md:w-1/3">
                 <h3 class="font-semibold text-xl text-white mb-5">Created by</h3>
-                        <span class="inline-block text-base mb-3 text-white">Adib Nasyrul Shodiq</span>
-                        <span class="inline-block text-base mb-3 text-white">Ananda Satria Ariyanto</span>
-                        <span class="inline-block text-base mb-3 text-white">Fernando</span>
-                        <span class="inline-block text-base mb-3 text-white">Muhammad Aulia Nur Fadhillah</span>
-                        <span class="inline-block text-base mb-3 text-white">Vanisa Aulia Putriyani</span>
+                        <span class="inline-block text-base mb-3 text-white">Adib Nasyrul Shodiq</span><br>
+                        <span class="inline-block text-base mb-3 text-white">Ananda Satria Ariyanto</span><br>
+                        <span class="inline-block text-base mb-3 text-white">Fernando</span><br>
+                        <span class="inline-block text-base mb-3 text-white">Muhammad Aulia Nur Fadhillah</span><br>
+                        <span class="inline-block text-base mb-3 text-white">Vanisa Aulia Putriyani</span><br>
             </div>
             <div class="w-full px-4 mb-4 ml-24 md:w-1/3">
                 <h3 class="font-semibold text-xl text-white mb-5">Contact Us</h3>
-                        <span class="inline-block text-base mb-3 text-white">info-event@event.com</span>
-                        <span class="inline-block text-base mb-3 text-white">+62 81234567890</span>
+                        <i class="fa fa-envelope text-white mr-2"></i>
+                        <span class="inline-block text-base mb-3 text-white">info-event@event.com</span><br>
+                        <i class="fa fa-phone text-white mr-2"></i>
+                        <span class="inline-block text-base mb-3 text-white">+62 812 3456 7890</span><br>
+                        <i class="fa fa-instagram text-white mr-3 inline-block"></i>
+                        <span class="inline-block text-base mb-3 text-white">Info.Event</span><br>
+                        <i class="fa fa-facebook-f text-white mr-4"></i>
+                        <span class="inline-block text-base mb-3 text-white">Info Event</span><br>
+                        <i class="fa fa-twitter text-white mr-3"></i>
+                        <span class="inline-block text-base mb-3 text-white">Info_Event</span><br>
             </div>
         </div>
 

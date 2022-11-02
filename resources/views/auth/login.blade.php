@@ -75,6 +75,7 @@
     </div>
     </div>
   </form>
+  <div class="pemisah"></div>
   <!-- End Form Register -->
 
 @endsection

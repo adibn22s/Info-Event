@@ -16,15 +16,14 @@ return new class extends Migration
         Schema::create('event', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()
-            ->index('fk_event_to_users');
-            $table->foreignId('category_id')->nullable()
-            ->index('fk_doctor_to_category');
+            ->index('fk_event_to_users'); 
             $table->string('name')->nullable();
             $table->string('instance')->nullable();
             $table->string('time')->nullable();
             $table->string('location')->nullable();
             $table->string('registration')->nullable();
-            $table->enum('category',[1,2,3]);
+            $table->string('category')->nullable();
+            $table->longText('contact')->nullable();
             $table->string('invite_group_link')->nullable();
             $table->date('date_is_held')->nullable();
             $table->string('description')->nullable();

@@ -7,9 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Operational\RequestEvent;
 use App\Models\MasterData\Event;
-use App\Models\MasterData\Category;
 
 use App\Http\Requests\RequestEvent\StoreEventRequest;
 

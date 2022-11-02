@@ -20,9 +20,8 @@ use Auth;
 use File;
 
 // use model here
-use App\Models\Operational\RequestEvent;
 use App\Models\MasterData\Event;
-use App\Models\MasterData\Category;
+use App\Models\User;
 
 // thirdparty package
 
@@ -47,13 +46,14 @@ class ReportEventController extends Controller
     {
         abort_if(Gate::denies('event_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+
+        Auth::user();
         // for table grid
         $event = Event::orderBy('created_at', 'desc')->get();
 
-        // for select2 = ascending a to z
-        $request_event = RequestEvent::orderBy('event_name', 'asc')->get();
+        
 
-        return view('pages.backsite.master-data.event.index', compact('event', 'request_event'));
+        return view('pages.backsite.master-data.event.index', compact('event'));
     }
 
     /**
@@ -127,10 +127,10 @@ class ReportEventController extends Controller
         abort_if(Gate::denies('event_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         // for select2 = ascending a to z
-        $category = Category::orderBy('name', 'asc')->get();
-        $request_event = RequestEvent::orderBy('event_name', 'asc')->get();
+        // $category = Category::orderBy('catname', 'asc')->get();
+        // $request_event = RequestEvent::orderBy('event_name', 'asc')->get();
 
-        return view('pages.backsite.master-data.event.edit', compact('event','category'));
+        return view('pages.backsite.master-data.event.edit', compact('event'));
     }
 
     /**

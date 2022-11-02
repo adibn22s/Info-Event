@@ -53,38 +53,15 @@
                         {{-- @can('event_access') --}}
                             <li class="{{ request()->is('backsite/event') || request()->is('backsite/event/*') || request()->is('backsite/*/event') || request()->is('backsite/*/event/*') ? 'active' : '' }} ">
                                 <a class="menu-item" href="{{ route('backsite.event.index') }}">
-                                    <i></i><span>event</span>
+                                    <i></i><span>Event</span>
                                 </a>
                             </li>
                         {{-- @endcan --}}
-                         {{-- @can('category_access') --}}
-                         <li class="{{ request()->is('backsite/category') || request()->is('backsite/category/*') || request()->is('backsite/*/category') || request()->is('backsite/*/category/*') ? 'active' : '' }} ">
-                            <a class="menu-item" href="{{ route('backsite.category.index') }}">
-                                <i></i><span>Category</span>
-                            </a>
-                        </li>
-                    {{-- @endcan --}}
-
-                    </ul>
+                        </ul>
                 </li>
             {{-- @endcan --}}
 
-            {{-- @can('operational_access') --}}
-                <li class=" nav-item"><a href="#"><i class="{{ request()->is('backsite/request_event') || request()->is('backsite/request_event/*') || request()->is('backsite/*/request_event') || request()->is('backsite/*/request_event/*') || request()->is('backsite/hospital-patient') || request()->is('backsite/hospital-patient/*') || request()->is('backsite/*/hospital-patient') || request()->is('backsite/*/hospital-patient/*') || request()->is('backsite/appointment') || request()->is('backsite/appointment/*') || request()->is('backsite/*/appointment') || request()->is('backsite/*/appointment/*') || request()->is('backsite/transaction') || request()->is('backsite/transaction/*') || request()->is('backsite/*/transaction') || request()->is('backsite/*/transaction/*') ? 'bx bx-hive bx-flashing' : 'bx bx-hive' }}"></i><span class="menu-title" data-i18n="Operational">Operational</span></a>
-                    <ul class="menu-content">
-
-                        {{-- @can('request_event_access') --}}
-                            <li class="{{ request()->is('backsite/request_event') || request()->is('backsite/request_event/*') || request()->is('backsite/*/request_event') || request()->is('backsite/*/request_event/*') ? 'active' : '' }} ">
-                                <a class="menu-item" href="{{ route('backsite.request-event.index') }}">
-                                    <i></i><span>Request Event</span>
-                                </a>
-                            </li>
-                        {{-- @endcan --}}
-
-                       
-                    </ul>
-                </li>
-            {{-- @endcan --}}
+           
 
         </ul>
     </div>

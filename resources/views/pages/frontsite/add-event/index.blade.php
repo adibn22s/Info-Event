@@ -82,11 +82,11 @@
                     <option value="{{ '' }}" class="text-white" disabled selected>Choose
                     </option>
 
-                    <option value="1"> Webinar
+                    <option value="Webinar"> Webinar
                     </option>
-                    <option value="2"> Workshop
+                    <option value="Workshop"> Workshop
                     </option>
-                    <option value="3"> Job Fair
+                    <option value="Job Fair"> Job Fair
                     </option>
 
                 </select>
@@ -108,6 +108,17 @@
             @if ($errors->has('invite_group_link'))
                 <p style="font-style: bold; color: red;">
                     {{ $errors->first('invite_group_link') }}</p>
+            @endif
+
+            <br>
+            <label id="label1" class="text-white text-2xl mb-3 "><b>Contact</b></b></label>
+            <input type="text" id="contact" name="contact"
+                placeholder="081234567890" value="{{ old('contact') }}" autocomplete="off"
+                required class="glassy-text ">
+
+            @if ($errors->has('contact'))
+                <p style="font-style: bold; color: red;">
+                    {{ $errors->first('contact') }}</p>
             @endif
 
             <br>

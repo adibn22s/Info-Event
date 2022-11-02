@@ -258,7 +258,10 @@
                                             <thead>
                                                 <tr>
                                                     <th>Date</th>
+                                                    <th>User</th>
+                                                    <th>Contact</th>
                                                     <th>Name</th>
+                                                    <th>Category</th>
                                                     <th>Poster</th>
                                                     <th style="text-align:center; width:150px;">Action</th>
                                                 </tr>
@@ -267,7 +270,10 @@
                                                 @forelse($event as $key => $event_item)
                                                     <tr data-entry-id="{{ $event_item->id }}">
                                                         <td>{{ isset($event_item->date_is_held) ? date('d/m/Y', strtotime($event_item->date_is_held)) : '' }}</td>
+                                                        <td>{{ $event_item->users->name ?? ''  }}</td>
+                                                        <td>{{ $event_item->contact ?? ''  }}</td>
                                                         <td>{{ $event_item->name ?? '' }}</td>
+                                                        <td>{{ $event_item->category ?? '' }}</td>
                                                         <td><a data-fancybox="gallery" data-src="{{ request()->getSchemeAndHttpHost().'/storage'.'/'.$event_item->poster }}" class="blue accent-4 text-center">Show</a></td>
                                                         <td class="text-center">
 
